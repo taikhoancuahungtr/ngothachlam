@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 import android.os.Build;
 
@@ -32,8 +33,24 @@ public class MainActivity extends Activity {
 		String xacNhanMatKhau = txtXacNhanMatKhau.getText().toString();
 		if(!matKhau.equals(xacNhanMatKhau)) {
 			Toast.makeText(getBaseContext(), "Xac nhan mat khau bi sai", Toast.LENGTH_SHORT).show();
+			txtMatKhau.setText("");
+			txtXacNhanMatKhau.setText("");
+			txtMatKhau.requestFocus();
 			return;
 		}
+		EditText txtMail = (EditText) findViewById(R.id.txtEmail);
+		String email = txtMail.getText().toString();
+		RadioButton rbNam = (RadioButton) findViewById(R.id.rbNam);
+		String gioiTinh = "Nam";
+		if(rbNam.isChecked() == false) {
+			gioiTinh = "Nu";
+		}
+		
+		String thongTinDangKy = "Tai Khoan: " + taiKhoan + "\n" 
+							  + "Mat Khau: " + matKhau + "\n"
+							  + "email: " + email + "\n"
+							  + "Gioi Tinh: " + gioiTinh;
+		Toast.makeText(getBaseContext(), thongTinDangKy, Toast.LENGTH_SHORT).show();
 	}
 
 	@Override
