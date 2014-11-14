@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Build;
 
@@ -20,9 +22,25 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.formdangky);
-
+//		setContentView(R.layout.formdangky);
+		setContentView(R.layout.countdown);
+		
+		tv = (TextView) findViewById(R.id.textView1);
+		countDown.sendEmptyMessage(0);
 	}
+	
+	TextView tv;
+	int timeOut = 10;
+	Handler countDown = new Handler() {
+		int i = timeOut;
+		public void handleMessage(android.os.Message msg) {
+			tv.setText(i-- + "");
+			if(i == -1) {
+				return;
+			}
+			this.sendEmptyMessageDelayed(0, 1000);
+		}
+	};
 	
 	public void submit(View v) {
 		EditText txtTaiKhoan = (EditText) findViewById(R.id.txtTaiKhoan);

@@ -26,13 +26,15 @@ public final class R {
         public static final int submit=0x7f020001;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f08000f;
-        public static final int action_settings=0x7f080013;
-        public static final int btnSubmit=0x7f080011;
+        public static final int LinearLayout1=0x7f080011;
+        public static final int action_settings=0x7f080015;
+        public static final int btnSubmit=0x7f080013;
+        public static final int button1=0x7f080010;
         public static final int checkBox1=0x7f080009;
         public static final int checkBox2=0x7f08000a;
         public static final int container=0x7f080000;
-        public static final int imageView1=0x7f080010;
+        public static final int editText1=0x7f08000f;
+        public static final int imageView1=0x7f080012;
         public static final int radioGroup1=0x7f08000c;
         public static final int rbNam=0x7f08000d;
         public static final int rbNu=0x7f08000e;
@@ -44,13 +46,14 @@ public final class R {
         public static final int txtAcc=0x7f080002;
         public static final int txtEmail=0x7f080008;
         public static final int txtMatKhau=0x7f080004;
-        public static final int txtTaiKhoan=0x7f080012;
+        public static final int txtTaiKhoan=0x7f080014;
         public static final int txtXacNhanMatKhau=0x7f080006;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
-        public static final int displayimage=0x7f030001;
-        public static final int formdangky=0x7f030002;
+        public static final int countdown=0x7f030001;
+        public static final int displayimage=0x7f030002;
+        public static final int formdangky=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f070000;
