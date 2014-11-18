@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 			diemSo++;
 		}
 		sinhCauHoi();
+		txtResult.setText("");
 	}
 	
 	void sinhCauHoi() {
