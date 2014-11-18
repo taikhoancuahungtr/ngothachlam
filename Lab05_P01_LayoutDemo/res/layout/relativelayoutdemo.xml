@@ -6,7 +6,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/lblTimeOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -20,9 +20,9 @@
         android:id="@+id/txtTimeOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/textView1"
+        android:layout_alignTop="@id/lblTimeOut"
         android:layout_marginLeft="24dp"
-        android:layout_toRightOf="@+id/textView1"
+        android:layout_toRightOf="@+id/lblTimeOut"
         android:ems="10" >
 
         <requestFocus />

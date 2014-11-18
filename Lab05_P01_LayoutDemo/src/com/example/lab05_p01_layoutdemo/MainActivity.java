@@ -1,5 +1,7 @@
 package com.example.lab05_p01_layoutdemo;
 
+import java.util.Random;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -10,22 +12,46 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+	Random r = new Random();
+	int a, b, diemSo, soCauHoi;
+	
+	public void pressOK(View v) {
+		int result = Integer.parseInt(txtResult.getText().toString());
+		if(a + b == result) {
+			diemSo++;
+		}
+		sinhCauHoi();
+	}
+	
+	void sinhCauHoi() {
+		a = r.nextInt(50);
+		b = r.nextInt(50);
+		txtA.setText(a + "");
+		txtB.setText(b + "");
+		soCauHoi++;
+	}
+	
 	public void startGame(View v) {
+		txtResult.setEnabled(true);
+		btnOK.setEnabled(true);
 		txtTimeOut = (EditText) findViewById(R.id.txtTimeOut);
 		txtTimeOut.setEnabled(false);
 		timeOut = Integer.parseInt(txtTimeOut.getText().toString());
+		
+		sinhCauHoi();
 
 		Handler countDown = new Handler() {
 			int t = timeOut;
 			public void handleMessage(android.os.Message msg) {
 				if(t == -1) {
-					EditText txtResult = (EditText) findViewById(R.id.txtResult);
 					txtResult.setEnabled(false);
-					Button btnOK = (Button) findViewById(R.id.btnOK);
 					btnOK.setEnabled(false);
+					lblTimeOut.setText("Ket Qua");
+					txtTimeOut.setText(diemSo + "/" + soCauHoi + "/" + timeOut);
 					return;
 				}
 				txtTimeOut.setText(t-- + "");
@@ -38,13 +64,22 @@ public class MainActivity extends Activity {
 	
 	int timeOut;
 	EditText txtTimeOut;
+	Button btnOK;
+	EditText txtResult;
+	TextView txtA, txtB, lblTimeOut;	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.gamedemo);
-		
-		
+
+		txtResult = (EditText) findViewById(R.id.txtResult);
+		btnOK = (Button) findViewById(R.id.btnOK);
+		lblTimeOut = (TextView) findViewById(R.id.lblTimeOut);
+		txtResult.setEnabled(false);
+		btnOK.setEnabled(false);
+		txtA = (TextView) findViewById(R.id.txtA);
+		txtB = (TextView) findViewById(R.id.txtB);
 		
 		// Demo gridlayout
 //		int n = 4;
