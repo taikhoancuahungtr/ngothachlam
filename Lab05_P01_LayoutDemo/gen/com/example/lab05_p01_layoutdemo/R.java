@@ -33,10 +33,10 @@ public final class R {
         public static final int action_settings=0x7f080012;
         public static final int btnOK=0x7f080009;
         public static final int btnStart=0x7f080003;
+        public static final int lblTimeOut=0x7f080001;
         public static final int tableRow1=0x7f08000f;
         public static final int tableRow2=0x7f080010;
         public static final int tableRow3=0x7f080011;
-        public static final int textView1=0x7f080001;
         public static final int textView3=0x7f080005;
         public static final int textView5=0x7f080007;
         public static final int textView6=0x7f08000c;
