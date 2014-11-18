@@ -3,6 +3,7 @@ package com.example.lab05_p01_layoutdemo;
 import java.util.Random;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -36,6 +37,24 @@ public class MainActivity extends Activity {
 		soCauHoi++;
 	}
 	
+	Handler warning = new Handler() {
+		int i = 0;
+		public void handleMessage(android.os.Message msg) {
+			if(stopWarning) {
+				return;
+			}
+			i++;
+			if(i % 2 == 0) {
+				lblTimeOut.setBackgroundColor(Color.CYAN);
+			} else {
+				lblTimeOut.setBackgroundColor(Color.YELLOW);
+			}
+			this.sendEmptyMessageDelayed(0, 500);
+		}
+	};
+	
+	boolean stopWarning = false;
+	
 	public void startGame(View v) {
 		txtResult.setEnabled(true);
 		btnOK.setEnabled(true);
@@ -48,14 +67,18 @@ public class MainActivity extends Activity {
 		Handler countDown = new Handler() {
 			int t = timeOut;
 			public void handleMessage(android.os.Message msg) {
+				if(t == 10) {
+					warning.sendEmptyMessage(0);
+				}
+				txtTimeOut.setText(t-- + "");
 				if(t == -1) {
+					stopWarning = true;
 					txtResult.setEnabled(false);
 					btnOK.setEnabled(false);
 					lblTimeOut.setText("Ket Qua");
 					txtTimeOut.setText(diemSo + "/" + soCauHoi + "/" + timeOut);
 					return;
 				}
-				txtTimeOut.setText(t-- + "");
 				this.sendEmptyMessageDelayed(0, 1000);
 			}
 		};
