@@ -8,33 +8,32 @@
         android:id="@+id/editText1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:gravity="top|left"
-        android:lines="5"
-        android:text="Test"
-        android:textSize="12sp" >
+        android:ems="10" 
+        android:text="Test">
 
         <requestFocus />
     </EditText>
-
-    <SeekBar
-        android:id="@+id/seekBar1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:progress="12" />
-
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onSave"
-        android:text="@string/btnSave" />
 
     <Button
         android:id="@+id/btnIODemo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="IODemo" 
-        android:onClick="onClick"/>
+        android:text="Save"
+        android:onClick="saveToFile" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Read"
+        android:onClick="readFromFile" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Content of File"
+        android:textAppearance="?android:attr/textAppearanceLarge" 
+        android:lines="5"/>
 
 </LinearLayout>
