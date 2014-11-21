@@ -1,6 +1,7 @@
 package com.example.lab06_p01_persistencedemo;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -40,6 +41,11 @@ public class MainActivity extends Activity {
 		editText.setTextSize(sharedPreferences.getInt("FontSize", 14));
 		seekBar.setProgress(sharedPreferences.getInt("FontSize", 14));
 		editText.setText(sharedPreferences.getString("Content", "Test"));
+	}
+	
+	public void onClick(View v) {
+		Intent i = new Intent(getBaseContext(), IODemo.class);
+		startActivity(i);
 	}
 	
 	public void onSave(View v) {
