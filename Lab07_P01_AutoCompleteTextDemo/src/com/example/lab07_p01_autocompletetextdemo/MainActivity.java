@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.MultiAutoCompleteTextView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 
 public class MainActivity extends Activity {
 
@@ -28,6 +30,11 @@ public class MainActivity extends Activity {
 				(MultiAutoCompleteTextView) findViewById(R.id.multiAutoCompleteTextView1);
 		multiAutoCompleteTextView.setAdapter(adapter);
 		multiAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
+		
+		SpinnerAdapter spinnerAdapter = new ArrayAdapter(getBaseContext(), 
+				R.array.countries, android.R.layout.simple_dropdown_item_1line);
+		Spinner spinner = (Spinner) findViewById(R.id.spinner1);
+		spinner.setAdapter(spinnerAdapter);		
 	}
 
 	@Override
