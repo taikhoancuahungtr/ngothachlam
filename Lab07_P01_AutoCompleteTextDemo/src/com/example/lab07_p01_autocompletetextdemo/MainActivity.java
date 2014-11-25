@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.MultiAutoCompleteTextView;
 
 public class MainActivity extends Activity {
 
@@ -18,9 +19,15 @@ public class MainActivity extends Activity {
 		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getBaseContext(), 
 				android.R.layout.simple_dropdown_item_1line, COUNTRIES);
+		
 		AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) 
 				findViewById(R.id.autoCompleteTextView1);
 		autoCompleteTextView.setAdapter(adapter);
+		
+		MultiAutoCompleteTextView multiAutoCompleteTextView = 
+				(MultiAutoCompleteTextView) findViewById(R.id.multiAutoCompleteTextView1);
+		multiAutoCompleteTextView.setAdapter(adapter);
+		multiAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 	}
 
 	@Override
