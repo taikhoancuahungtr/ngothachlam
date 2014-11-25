@@ -31,8 +31,9 @@ public class MainActivity extends Activity {
 		multiAutoCompleteTextView.setAdapter(adapter);
 		multiAutoCompleteTextView.setTokenizer(new MultiAutoCompleteTextView.CommaTokenizer());
 		
-		SpinnerAdapter spinnerAdapter = new ArrayAdapter(getBaseContext(), 
-				R.array.countries, android.R.layout.simple_dropdown_item_1line);
+		String[] countries = getResources().getStringArray(R.array.countries);		
+		ArrayAdapter spinnerAdapter = new ArrayAdapter(getBaseContext(), 
+				android.R.layout.simple_dropdown_item_1line, countries);
 		Spinner spinner = (Spinner) findViewById(R.id.spinner1);
 		spinner.setAdapter(spinnerAdapter);		
 	}
