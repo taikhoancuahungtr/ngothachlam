@@ -11,6 +11,8 @@ public class DetailActivityFragment extends Fragment {
 
 	Student s;
 	
+	public DetailActivityFragment() {}
+	
 	public DetailActivityFragment(Student s) {
 		this.s = s;
 	}

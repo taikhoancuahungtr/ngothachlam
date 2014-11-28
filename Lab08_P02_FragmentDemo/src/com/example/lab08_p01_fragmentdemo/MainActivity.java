@@ -27,6 +27,6 @@ public static DetailActivityFragment detail;
 			detail = new DetailActivityFragment(null);
 			ft.replace(R.id.detailFrame, detail);
 		}
-		ft.commit();
+		ft.commit();		
 	}
 }
