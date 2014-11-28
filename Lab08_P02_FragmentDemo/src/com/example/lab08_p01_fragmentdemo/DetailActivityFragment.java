@@ -31,9 +31,9 @@ public class DetailActivityFragment extends Fragment {
 		TextView txtName = (TextView) getView().findViewById(R.id.txtName);
 		TextView txtScore = (TextView) getView().findViewById(R.id.txtScore);
 		TextView txtSchool = (TextView) getView().findViewById(R.id.txtSchool);
-		txtID.setText(s.getID());
+		txtID.setText(s.getID() + "");
 		txtName.setText(s.getName());
-		txtScore.setText(s.getScore());
+		txtScore.setText(s.getScore() + "");
 		txtSchool.setText(s.getSchool());
 	}
 	
