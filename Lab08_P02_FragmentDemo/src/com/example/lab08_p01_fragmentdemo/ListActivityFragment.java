@@ -35,7 +35,7 @@ public class ListActivityFragment extends Fragment {
 			a[i] = new Student(123 + i, "Name " + i, 55 + 3 * i, "DH " + i);
 		}
 		
-		ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(c, android.R.layout.simple_list_item_checked);
+		ArrayAdapter<Student> adapter = new ArrayAdapter<Student>(c, android.R.layout.simple_list_item_checked, a);
 		ListView listView = (ListView) getView().findViewById(R.id.listView1);
 		listView.setAdapter(adapter);
 		listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);

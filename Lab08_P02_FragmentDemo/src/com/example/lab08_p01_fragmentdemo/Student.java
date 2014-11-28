@@ -14,6 +14,11 @@ public class Student {
 		this.school = school;
 	}
 
+	@Override
+	public String toString() {
+		return ID + " - " + name;
+	}
+	
 	public int getID() {
 		return ID;
 	}
