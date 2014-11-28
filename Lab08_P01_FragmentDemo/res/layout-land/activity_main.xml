@@ -7,13 +7,13 @@
     <fragment
         android:id="@+id/fragment1"
         android:name="com.example.lab08_p01_fragmentdemo.ListActivityFragment"
-        android:layout_width="152dp"
+        android:layout_width="200dp"
         android:layout_height="fill_parent" />
 
     <fragment
         android:id="@+id/fragment2"
         android:name="com.example.lab08_p01_fragmentdemo.DetailActivityFragment"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
 </LinearLayout>
