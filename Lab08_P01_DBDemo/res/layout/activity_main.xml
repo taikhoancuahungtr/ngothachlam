@@ -27,19 +27,20 @@
         android:orientation="vertical" >
 
         <Button
-            android:id="@+id/button1"
+            android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="28dp"
-            android:text="Addnew" />
+            android:text="Addnew"
+            android:onClick="addnew" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/button1"
+            android:layout_alignBottom="@+id/btnUpdate"
             android:layout_centerHorizontal="true"
             android:text="Exit" />
 
