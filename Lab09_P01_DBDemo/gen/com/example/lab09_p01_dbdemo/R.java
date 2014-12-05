@@ -28,9 +28,10 @@ public final class R {
         public static final int LinearLayout1=0x7f080012;
         public static final int RelativeLayout1=0x7f080014;
         public static final int TableLayout1=0x7f080001;
-        public static final int action_settings=0x7f080015;
-        public static final int btnAddnew=0x7f080010;
+        public static final int action_settings=0x7f080016;
         public static final int btnCancel=0x7f080011;
+        public static final int btnDelete=0x7f080015;
+        public static final int btnUpdate=0x7f080010;
         public static final int frame=0x7f080000;
         public static final int listView1=0x7f080013;
         public static final int tableRow1=0x7f080002;
@@ -52,6 +53,7 @@ public final class R {
         public static final int activity_main=0x7f030000;
         public static final int addaccount=0x7f030001;
         public static final int listaccount=0x7f030002;
+        public static final int updateaccount=0x7f030003;
     }
     public static final class menu {
         public static final int main=0x7f070000;

@@ -106,7 +106,7 @@
             android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Addnew" />
+            android:text="Update" />
 
         <Button
             android:id="@+id/btnCancel"
@@ -115,5 +115,11 @@
             android:text="Cancel" />
 
     </TableRow>
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete" />
 
 </TableLayout>

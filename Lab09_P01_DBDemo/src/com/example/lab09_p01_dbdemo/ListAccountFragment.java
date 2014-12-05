@@ -1,6 +1,7 @@
 package com.example.lab09_p01_dbdemo;
 
 import java.util.ArrayList;
+
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -31,7 +33,7 @@ public class ListAccountFragment extends Fragment {
 	public void onStart() {
 		super.onStart();
 		
-		ArrayList<Account> listAccount = new ArrayList<Account>();
+		final ArrayList<Account> listAccount = new ArrayList<Account>();
 		DBAdapter db = new DBAdapter(context);
 		db.open();
 		Cursor c = db.getAllAccount();
@@ -49,13 +51,24 @@ public class ListAccountFragment extends Fragment {
 		listView.setAdapter(adapter);
 		listView.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
 		
-		Button btnAddnew = (Button) getView().findViewById(R.id.btnAddnew);
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+				FragmentTransaction ft = getFragmentManager().beginTransaction();
+		        ft.replace(R.id.frame, new UpdateAccountFragment(context, listAccount.get(position)));
+		        ft.addToBackStack(null);
+		        ft.commit();
+			}
+		});
+		
+		Button btnAddnew = (Button) getView().findViewById(R.id.btnUpdate);
 		btnAddnew.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				FragmentTransaction ft = getFragmentManager().beginTransaction();
 		        ft.replace(R.id.frame, new AddAccountFragment(context));
+		        ft.addToBackStack(null);
 		        ft.commit();
 			}
 		});
