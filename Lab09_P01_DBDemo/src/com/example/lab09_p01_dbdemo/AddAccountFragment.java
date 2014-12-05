@@ -26,7 +26,7 @@ public class AddAccountFragment extends Fragment {
 	public void onStart() {
 		super.onStart();
 		
-		Button btnAdd = (Button) getView().findViewById(R.id.btnAddnew);
+		Button btnAdd = (Button) getView().findViewById(R.id.btnUpdate);
 		btnAdd.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
