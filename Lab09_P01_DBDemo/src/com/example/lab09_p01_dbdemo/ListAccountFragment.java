@@ -72,5 +72,14 @@ public class ListAccountFragment extends Fragment {
 		        ft.commit();
 			}
 		});
+		
+		Button btnExit = (Button) getView().findViewById(R.id.btnExit);
+		btnExit.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				System.exit(0);
+			}
+		});
 	}
 }
