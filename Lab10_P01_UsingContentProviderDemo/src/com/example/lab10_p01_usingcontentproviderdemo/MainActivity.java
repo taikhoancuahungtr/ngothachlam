@@ -1,9 +1,17 @@
 package com.example.lab10_p01_usingcontentproviderdemo;
 
 import android.app.Activity;
+import android.content.ContentResolver;
+import android.content.ContentUris;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Browser;
+import android.provider.Contacts;
+import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -12,6 +20,18 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+//        Uri uri = Browser.BOOKMARKS_URI; // content://abc.../bookmark/1
+        Uri uri = ContactsContract.Contacts.CONTENT_URI;
+//        uri = ContentUris.withAppendedId(uri, 1);
+        ContentResolver cv = getContentResolver();
+        Cursor c = cv.query(uri, null, null, null, null);
+        if(c.moveToFirst()) {
+        	do {
+        		Toast.makeText(getBaseContext(), c.getString(0) + " - " + c.getString(1) + " - " + c.getString(2), Toast.LENGTH_SHORT).show();
+        	} while(c.moveToNext());
+        }
+        
     }
 
 
