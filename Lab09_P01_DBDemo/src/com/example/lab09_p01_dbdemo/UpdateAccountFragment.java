@@ -71,5 +71,14 @@ public class UpdateAccountFragment extends Fragment {
 				getFragmentManager().popBackStackImmediate();				
 			}
 		});
+		
+		Button btnCancel = (Button) getView().findViewById(R.id.btnCancel);
+		btnCancel.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				getFragmentManager().popBackStackImmediate();				
+			}
+		});
 	}
 }
