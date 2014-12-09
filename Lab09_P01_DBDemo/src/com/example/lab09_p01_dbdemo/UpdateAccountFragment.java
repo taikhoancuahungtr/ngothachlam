@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class UpdateAccountFragment extends Fragment {
 
@@ -24,7 +25,7 @@ public class UpdateAccountFragment extends Fragment {
 		return inflater.inflate(R.layout.updateaccount, container, false);
 	}
 	
-	EditText txtID;
+	TextView txtID;
 	EditText txtUsername;
 	EditText txtPass;
 	EditText txtConfirm;
@@ -33,7 +34,7 @@ public class UpdateAccountFragment extends Fragment {
 	public void onStart() {
 		super.onStart();
 		
-		txtID = (EditText) getView().findViewById(R.id.txtID);
+		txtID = (TextView) getView().findViewById(R.id.txtID);
 		txtUsername = (EditText) getView().findViewById(R.id.txtUsername);
 		txtPass = (EditText) getView().findViewById(R.id.txtPass);
 		txtConfirm = (EditText) getView().findViewById(R.id.txtConfirm);
@@ -54,6 +55,20 @@ public class UpdateAccountFragment extends Fragment {
 				db.updateAccount(id, txtUsername.getText().toString(), txtPass.getText().toString(), "");
 				db.close();
 				getFragmentManager().popBackStackImmediate();
+			}
+		});
+		
+		Button btnDel = (Button) getView().findViewById(R.id.btnDelete);
+		btnDel.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				DBAdapter db = new DBAdapter(context);
+				db.open();
+				int id = a.getId();
+				db.deleteAccount(id);
+				db.close();
+				getFragmentManager().popBackStackImmediate();				
 			}
 		});
 	}
