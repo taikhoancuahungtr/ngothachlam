@@ -37,7 +37,7 @@
             android:onClick="addnew" />
 
         <Button
-            android:id="@+id/btnCancel"
+            android:id="@+id/btnExit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/btnUpdate"
