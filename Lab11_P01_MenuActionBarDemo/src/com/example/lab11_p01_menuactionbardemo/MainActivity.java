@@ -1,5 +1,6 @@
 package com.example.lab11_p01_menuactionbardemo;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -19,6 +20,9 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+//        ActionBar actionBar = getActionBar();
+//        actionBar.hide();
     }
 
     public void showPopupMenu(View v) {
