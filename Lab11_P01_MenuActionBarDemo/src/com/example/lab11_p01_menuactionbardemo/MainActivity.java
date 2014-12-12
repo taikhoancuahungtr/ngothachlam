@@ -2,8 +2,12 @@ package com.example.lab11_p01_menuactionbardemo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -20,6 +24,18 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+        // Bat su kien Enter vao EditText Search
+        View menusearch = menu.findItem(R.id.menu0).getActionView();
+        final EditText txtSearch = (EditText) menusearch.findViewById(R.id.txtSearch);
+        txtSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+			
+			@Override
+			public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+				Toast.makeText(getBaseContext(), txtSearch.getText().toString(), Toast.LENGTH_SHORT).show(); 
+				return false;
+			}
+		});
+        
         return true;
     }
 
