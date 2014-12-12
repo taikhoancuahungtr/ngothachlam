@@ -3,6 +3,13 @@
     tools:context="com.example.lab11_p01_menuactionbardemo.MainActivity" >
 
     <item
+        android:id="@+id/menu0"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_launcher"
+        android:title="Search"
+        android:actionLayout="@layout/menusearch"/>
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
@@ -11,13 +18,13 @@
     <item
         android:id="@+id/menu1"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="always"
         android:icon="@drawable/ic_launcher"
         android:title="Menu 1"/>
     <item
         android:id="@+id/menu2"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="always"
         android:icon="@drawable/ic_launcher"
         android:title="Menu 2"/>
     <item
