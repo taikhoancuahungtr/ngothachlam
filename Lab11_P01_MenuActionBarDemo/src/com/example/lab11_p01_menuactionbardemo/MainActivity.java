@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -23,11 +24,18 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
+        
         setContentView(R.layout.activity_main);
         
         ActionBar actionBar = getActionBar();
-        actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
-        actionBar.show();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#330000ff")));
+        actionBar.setStackedBackgroundDrawable(new ColorDrawable(Color.parseColor("#550000ff")));
+        
+//        ActionBar actionBar = getActionBar();
+//        actionBar.setBackgroundDrawable(new ColorDrawable(Color.rgb(150, 215, 242)));
+//        actionBar.show();
         
         EditText editText1 = (EditText) findViewById(R.id.editText1);
         editText1.setOnCreateContextMenuListener(this);
