@@ -2,12 +2,16 @@ package com.example.lab11_p01_menuactionbardemo;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.widget.EditText;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -21,8 +25,18 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-//        ActionBar actionBar = getActionBar();
-//        actionBar.hide();
+        ActionBar actionBar = getActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.BLACK));
+        actionBar.show();
+        
+        EditText editText1 = (EditText) findViewById(R.id.editText1);
+        editText1.setOnCreateContextMenuListener(this);
+    }
+    
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+    	super.onCreateContextMenu(menu, v, menuInfo);
+    	getMenuInflater().inflate(R.menu.contextmenu, menu);
     }
 
     public void showPopupMenu(View v) {
