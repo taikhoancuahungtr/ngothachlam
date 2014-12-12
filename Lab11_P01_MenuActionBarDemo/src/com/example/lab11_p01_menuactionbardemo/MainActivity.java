@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
     }
 
+    public void showPopupMenu(View v) {
+		PopupMenu popupMenu = new PopupMenu(getBaseContext(), v);
+		MenuInflater inflater = popupMenu.getMenuInflater();
+		inflater.inflate(R.menu.popupmenu, popupMenu.getMenu());
+		popupMenu.show();
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
