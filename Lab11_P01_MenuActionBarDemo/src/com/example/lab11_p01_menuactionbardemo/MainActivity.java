@@ -46,6 +46,23 @@ public class MainActivity extends Activity {
     	super.onCreateContextMenu(menu, v, menuInfo);
     	getMenuInflater().inflate(R.menu.contextmenu, menu);
     }
+    
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+    	switch (item.getItemId()) {
+			case R.id.cmenu2:
+				Toast.makeText(getBaseContext(), "Context Menu item 2", Toast.LENGTH_SHORT).show();
+				break;
+			case R.id.cmenu3:
+				Toast.makeText(getBaseContext(), "Context Menu item 3", Toast.LENGTH_SHORT).show();
+				break;
+			case R.id.cmenu4:
+				Toast.makeText(getBaseContext(), "Context Menu item 4", Toast.LENGTH_SHORT).show();
+				break;
+		}
+    	
+    	return super.onContextItemSelected(item);
+    }
 
     public void showPopupMenu(View v) {
 		PopupMenu popupMenu = new PopupMenu(getBaseContext(), v);
