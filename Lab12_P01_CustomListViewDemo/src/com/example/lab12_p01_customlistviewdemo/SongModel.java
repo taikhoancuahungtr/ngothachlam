@@ -8,11 +8,15 @@ public class SongModel {
 	private int year;
 	
 	public SongModel(String name, String time, String author, int year) {
-		super();
 		this.name = name;
 		this.time = time;
 		this.author = author;
 		this.year = year;
+	}
+	
+	@Override
+	public String toString() {
+		return name + " - " + time + " - " + author + " - " + year;
 	}
 
 	public String getName() {
