@@ -6,6 +6,7 @@ public class SongModel {
 	private String time;
 	private String author;
 	private int year;
+	private boolean selected;
 	
 	public SongModel(String name, String time, String author, int year) {
 		this.name = name;
@@ -50,4 +51,13 @@ public class SongModel {
 	public void setYear(int year) {
 		this.year = year;
 	}
+
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+	
 }
