@@ -46,20 +46,28 @@ public class SongAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		View v = convertView;
-		ViewHolder viewHolder = new ViewHolder();
-		SongModel song = list.get(position);
+		ViewHolder viewHolder;
 		if(convertView == null) {
-			View row = inflater.inflate(R.layout.row, parent, false);
-			viewHolder.txtName = (TextView) row.findViewById(R.id.txtName);
-			viewHolder.txtAuthor = (TextView) row.findViewById(R.id.txtAuthor);
-			viewHolder.txtYear = (TextView) row.findViewById(R.id.txtYear);
-			viewHolder.txtTime = (TextView) row.findViewById(R.id.txtTime);
+			viewHolder = new ViewHolder();
+			v = inflater.inflate(R.layout.row, parent, false);
+			viewHolder.txtName = (TextView) v.findViewById(R.id.txtName);
+			viewHolder.txtAuthor = (TextView) v.findViewById(R.id.txtAuthor);
+			viewHolder.txtYear = (TextView) v.findViewById(R.id.txtYear);
+			viewHolder.txtTime = (TextView) v.findViewById(R.id.txtTime);
+			v.setTag(viewHolder);
+		} else {
+			viewHolder = (ViewHolder) v.getTag();
 		}
 
-		viewHolder.txtName.setText(song.getName());
-		viewHolder.txtAuthor.setText(song.getAuthor());
-		viewHolder.txtYear.setText(song.getYear() + "");
-		viewHolder.txtTime.setText(song.getTime());
+		if(list.size() > 0) {
+			SongModel song = list.get(position);
+			viewHolder.txtName.setText(song.getName());
+			viewHolder.txtAuthor.setText(song.getAuthor());
+			viewHolder.txtYear.setText(song.getYear() + "");
+			viewHolder.txtTime.setText(song.getTime());
+		} else {
+			viewHolder.txtName.setText("No Data");
+		}
 		
 		return v;
 	}
