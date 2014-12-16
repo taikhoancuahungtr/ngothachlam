@@ -35,20 +35,32 @@ public class SongAdapter extends BaseAdapter {
 	public long getItemId(int position) {
 		return position;
 	}
+	
+	public static class ViewHolder {
+		public static TextView txtName;
+		public static TextView txtAuthor;
+		public static TextView txtYear;
+		public static TextView txtTime;
+	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View row = inflater.inflate(R.layout.row, parent, false);
+		View v = convertView;
+		ViewHolder viewHolder = new ViewHolder();
 		SongModel song = list.get(position);
-		TextView txtName = (TextView) row.findViewById(R.id.txtName);
-		TextView txtAuthor = (TextView) row.findViewById(R.id.txtAuthor);
-		TextView txtYear = (TextView) row.findViewById(R.id.txtYear);
-		TextView txtTime = (TextView) row.findViewById(R.id.txtTime);
-		txtName.setText(song.getName());
-		txtAuthor.setText(song.getAuthor());
-		txtYear.setText(song.getYear() + "");
-		txtTime.setText(song.getTime());
+		if(convertView == null) {
+			View row = inflater.inflate(R.layout.row, parent, false);
+			viewHolder.txtName = (TextView) row.findViewById(R.id.txtName);
+			viewHolder.txtAuthor = (TextView) row.findViewById(R.id.txtAuthor);
+			viewHolder.txtYear = (TextView) row.findViewById(R.id.txtYear);
+			viewHolder.txtTime = (TextView) row.findViewById(R.id.txtTime);
+		}
+
+		viewHolder.txtName.setText(song.getName());
+		viewHolder.txtAuthor.setText(song.getAuthor());
+		viewHolder.txtYear.setText(song.getYear() + "");
+		viewHolder.txtTime.setText(song.getTime());
 		
-		return row;
+		return v;
 	}
 }
