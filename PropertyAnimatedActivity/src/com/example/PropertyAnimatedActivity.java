@@ -73,7 +73,7 @@ public class PropertyAnimatedActivity extends Activity {
 		//create an object animator for second cloud
 		//same as previous except movement distance
 		ObjectAnimator cloudAnim2 = ObjectAnimator.ofFloat
-				(findViewById(R.id.cloud2), "x", 0, -350);
+				(findViewById(R.id.cloud2), "y", 0, -350);
 		cloudAnim2.setDuration(3000);
 		cloudAnim2.setRepeatCount(ValueAnimator.INFINITE);
 		cloudAnim2.setRepeatMode(ValueAnimator.REVERSE);
