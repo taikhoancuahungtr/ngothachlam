@@ -8,6 +8,8 @@
         android:repeatCount="infinite"
         android:repeatMode="reverse"
         android:valueTo="360"
+       	android:pivotX="0%"
+       	android:pivotY="0%"
         android:valueType="floatType" />
 
 </set>
