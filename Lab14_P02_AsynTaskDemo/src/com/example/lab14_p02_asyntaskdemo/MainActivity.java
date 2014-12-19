@@ -26,11 +26,11 @@ public class MainActivity extends Activity {
 	
 	public void startDownload(View v) throws MalformedURLException {
 		URL[] urls = {
-			new URL("Link 1"),
-			new URL("Link 2"),
-			new URL("Link 3"),
-			new URL("Link 4"),
-			new URL("Link 5")
+			new URL("http://media.doisongphapluat.com/329/2014/8/5/jennifer%20pham%202.jpg"),
+			new URL("http://4.bp.blogspot.com/_zMrru98bWEc/TSR0v-x3n7I/AAAAAAAACuw/VVCOtT7C9vo/s1600/jenifer-pham-dao-pho-5.jpg"),
+			new URL("http://4.bp.blogspot.com/_zMrru98bWEc/TRRN-XSkzKI/AAAAAAAACqQ/ZlKviGpgwgA/s1600/Jennifer-Pham1.jpg"),
+			new URL("http://1.bp.blogspot.com/-3guyPeod9eM/TbD0gAuhfbI/AAAAAAAAEmA/Prb0iEkIZ_A/s1600/Jennifer-Pham-2011-5.JPG"),
+			new URL("https://c2.staticflickr.com/4/3542/3681010208_632a4c8786.jpg")
 		};
 		new DownloadImage().execute(urls);
 	}
