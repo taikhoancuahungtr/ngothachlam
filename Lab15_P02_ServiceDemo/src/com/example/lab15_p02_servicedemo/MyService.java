@@ -3,6 +3,7 @@ package com.example.lab15_p02_servicedemo;
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.os.IBinder;
 import android.widget.Toast;
 
@@ -20,12 +21,17 @@ public class MyService extends Service {
 //		int result = download();
 		
 		new Downloader().execute();
+		
+//		handler1.sendEmptyMessage(0);
+		
 		return START_STICKY;
 	}
 	
 	@Override
 	public void onDestroy() {
 		Toast.makeText(this, "Service stoped", Toast.LENGTH_SHORT).show();
+		
+//		handler1.sendEmptyMessage(1000);
 	}
 	
 	int download() {
@@ -37,6 +43,18 @@ public class MyService extends Service {
 			return 1000;
 		}
 	}
+	
+	Handler handler1 = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+//			msg.what
+		};
+	};
+	
+	Handler handler2 = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+//			msg.what
+		};
+	};
 	
 	class Downloader extends AsyncTask<Void, Void, Integer> {
 
