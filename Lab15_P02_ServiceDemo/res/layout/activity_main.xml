@@ -9,8 +9,29 @@
     tools:context="com.example.lab15_p02_servicedemo.MainActivity" >
 
     <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/hello_world" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="16dp"
+        android:text="Start Service"
+        android:onClick="startService" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/btnStart"
+        android:layout_below="@+id/btnStart"
+        android:layout_marginTop="26dp"
+        android:text="Stop Service"
+        android:onClick="stopService"  />
 
 </RelativeLayout>
