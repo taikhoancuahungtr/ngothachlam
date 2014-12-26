@@ -46,6 +46,8 @@ public class MainActivity extends Activity {
 		@Override
 		protected Void doInBackground(Void... params) {
 			JSONArray a = getJSONArrayFromUrl("http://api.androidhive.info/json/movies.json");
+			// Hoac link sau thi phai xu ly khac mot chut
+			// http://api.androidhive.info/contacts/
 			for (int i = 0; i < a.length(); i++) {
 				try {
 					JSONObject o = a.getJSONObject(i);
