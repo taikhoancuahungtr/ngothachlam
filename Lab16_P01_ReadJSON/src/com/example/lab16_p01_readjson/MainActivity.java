@@ -43,13 +43,15 @@ public class MainActivity extends Activity {
 			this.context = context;
 		}
 
+		JSONArray a;
+		
 		@Override
 		protected Void doInBackground(Void... params) {
 			String url1 = "http://api.androidhive.info/json/movies.json";
 			// Hoac link sau thi phai xu ly khac mot chut
 			String url2 = "http://api.androidhive.info/contacts/";
 					
-			JSONArray a = getJSONArrayFromUrl(url1);
+			a = getJSONArrayFromUrl(url1);
 			for (int i = 0; i < a.length(); i++) {
 				try {
 					JSONObject o = a.getJSONObject(i);
@@ -59,6 +61,18 @@ public class MainActivity extends Activity {
 				}
 			}
 			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			for (int i = 0; i < a.length(); i++) {
+				try {
+					JSONObject o = a.getJSONObject(i);
+					Toast.makeText(context, o.getString("title") + " : " + o.getString("rating"), Toast.LENGTH_SHORT).show();
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
