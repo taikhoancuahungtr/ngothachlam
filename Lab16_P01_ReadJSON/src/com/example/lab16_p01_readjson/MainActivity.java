@@ -89,17 +89,20 @@ public class MainActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-			JSONArray jsonArray = null;
 			try {
 				is.close();
 				bf.close();
-				jsonArray = new JSONArray(content.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
-			} catch (JSONException e) {
-				e.printStackTrace();
 			}
-			return jsonArray;
 		}
+		
+		JSONArray jsonArray = null;
+		try {
+			jsonArray = new JSONArray(content.toString());
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return jsonArray;
 	}
 }
