@@ -1,10 +1,14 @@
 package com.example.lab15_p02_servicedemo;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import android.app.Service;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 public class MyService extends Service {
@@ -15,14 +19,20 @@ public class MyService extends Service {
 		return null;
 	}
 
+	Timer timer;
+	
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		Toast.makeText(this, "Service started", Toast.LENGTH_SHORT).show();
-//		int result = download();
-		
-		new Downloader().execute();
-		
-//		handler1.sendEmptyMessage(0);
+		timer = new Timer();
+		TimerTask task = new TimerTask() {
+			
+			@Override
+			public void run() {
+				Log.v("Service", "RUN");
+			}
+		};
+		timer.scheduleAtFixedRate(task, 0, 1000);
 		
 		return START_STICKY;
 	}
