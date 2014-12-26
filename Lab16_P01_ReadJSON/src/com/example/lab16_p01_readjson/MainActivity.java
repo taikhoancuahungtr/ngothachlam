@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -48,6 +49,15 @@ public class MainActivity extends Activity {
 			this.context = context;
 		}
 
+		ProgressDialog dialog;
+		
+		@Override
+		protected void onPreExecute() {
+			dialog = new ProgressDialog(context);
+			dialog.setTitle("Downloading");
+			dialog.show();
+		}
+		
 		@Override
 		protected Void doInBackground(Void... params) {
 			String url1 = "http://api.androidhive.info/json/movies.json";
@@ -79,6 +89,9 @@ public class MainActivity extends Activity {
 		
 		@Override
 		protected void onPostExecute(Void result) {
+			if(dialog.isShowing()) {
+				dialog.dismiss();
+			}
 			ListView listView = (ListView) findViewById(R.id.listView1);
 			listView.setAdapter(new MovieAdapter(context, listMovies));
 		}
