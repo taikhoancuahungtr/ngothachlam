@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		copyFromAssetToSDCard();
+		
 	}
 	
 	String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Musics";
@@ -39,20 +40,22 @@ public class MainActivity extends Activity {
 		AssetManager assetManager = getAssets();
 		try {
 			listFiles = assetManager.list("");
+			InputStream in = null;
+			OutputStream out = null;
 			for (int i = 0; i < listFiles.length; i++) {
 				if(!new File(listFiles[i]).isFile()) {
 					continue;
 				}
-				InputStream in = assetManager.open(listFiles[i]);
+				in = assetManager.open(listFiles[i]);
 				File file = new File(folderPath, listFiles[i]);
-				OutputStream out = new FileOutputStream(file);
+				out = new FileOutputStream(file);
 				copyFile(in, out);
-				if(in != null) {
-					in.close();
-				}
-				if(out != null) {
-					out.close();
-				}
+			}
+			if(in != null) {
+				in.close();
+			}
+			if(out != null) {
+				out.close();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
