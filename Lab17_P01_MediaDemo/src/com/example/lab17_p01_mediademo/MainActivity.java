@@ -29,15 +29,35 @@ public class MainActivity extends Activity {
 		
 	}
 	
+	public void stopMusic(View v) {
+		player.stop();
+	}
+	
+	public void seekToRight(View v) {
+		int curr = player.getCurrentPosition();
+		int newPosition = curr + 5 * duration / 100;
+		player.seekTo(newPosition);
+	}
+	
+	public void seekToLeft(View v) {
+		int curr = player.getCurrentPosition();
+		int newPosition = curr - 5 * duration / 100;
+		player.seekTo(newPosition);
+	}
+	
+	MediaPlayer player;
+	int duration;
+	
 	public void playMusic(View v) {
 		String url = "android.resource://" + getPackageName() + "/" + R.raw.giacmocothat;
 		Uri uri = Uri.parse(url);
-		MediaPlayer player = new MediaPlayer();
+		player = new MediaPlayer();
 		player.setAudioStreamType(AudioManager.STREAM_MUSIC);
 		try {
 			player.setDataSource(this, uri);
 			player.prepare();
 			player.start();
+			duration = player.getDuration();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {
