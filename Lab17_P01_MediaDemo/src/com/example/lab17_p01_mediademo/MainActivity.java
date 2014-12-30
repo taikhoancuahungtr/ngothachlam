@@ -12,10 +12,13 @@ import android.content.res.AssetManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.widget.MediaController;
+import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.VideoView;
 
 public class MainActivity extends Activity {
@@ -58,6 +61,11 @@ public class MainActivity extends Activity {
 			player.prepare();
 			player.start();
 			duration = player.getDuration();
+			
+			seekBar = (SeekBar) findViewById(R.id.seekBar1);
+			seekBar.setMax(duration);
+			
+			new UpdateSeekBar().execute();
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {
@@ -66,6 +74,29 @@ public class MainActivity extends Activity {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	SeekBar seekBar;
+	
+	class UpdateSeekBar extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... arg0) {
+			while(player.isPlaying()) {
+				publishProgress();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			return null;
+		}
+		
+		@Override
+		protected void onProgressUpdate(Void... values) {
+			seekBar.setProgress(player.getCurrentPosition());			
 		}
 	}
 	
