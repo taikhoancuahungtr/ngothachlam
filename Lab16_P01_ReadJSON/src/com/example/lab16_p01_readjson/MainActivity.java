@@ -1,12 +1,18 @@
 package com.example.lab16_p01_readjson;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -38,6 +44,22 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		new LoadMovie(this).execute();
+		
+		try {
+			Workbook workbook = Workbook.getWorkbook(new File("myfile.xls"));
+			Sheet sheet = workbook.getSheet(0);
+			Cell a1 = sheet.getCell(0, 0);
+			Cell b2 = sheet.getCell(1, 1);
+			Cell c2 = sheet.getCell(2, 1);
+
+			String stringa1 = a1.getContents();
+			String stringb2 = b2.getContents();
+			String stringc2 = c2.getContents();
+		} catch (BiffException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	class LoadMovie extends AsyncTask<Void, Void, Void> {
