@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.res.AssetManager;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,11 +25,31 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		copyFromAssetToSDCard();
+		copyFromAssetToSDCard();		
 		
 	}
 	
-	String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Musics";
+	public void playMusic(View v) {
+		String url = "android.resource://" + getPackageName() + "/" + R.raw.giacmocothat;
+		Uri uri = Uri.parse(url);
+		MediaPlayer player = new MediaPlayer();
+		player.setAudioStreamType(AudioManager.STREAM_MUSIC);
+		try {
+			player.setDataSource(this, uri);
+			player.prepare();
+			player.start();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	String folderPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/MyMusics";
 	
 	void copyFromAssetToSDCard() {
 		File f = new File(folderPath);
@@ -40,22 +61,20 @@ public class MainActivity extends Activity {
 		AssetManager assetManager = getAssets();
 		try {
 			listFiles = assetManager.list("");
-			InputStream in = null;
-			OutputStream out = null;
 			for (String fileName : listFiles) {
 				if(!new File(fileName).isFile()) {
 					continue;
 				}
-				in = assetManager.open(fileName);
+				InputStream in = assetManager.open(fileName);
 				File file = new File(folderPath, fileName);
-				out = new FileOutputStream(file);
+				OutputStream out = new FileOutputStream(file);
 				copyFile(in, out);
-			}
-			if(in != null) {
-				in.close();
-			}
-			if(out != null) {
-				out.close();
+				if(in != null) {
+					in.close();
+				}
+				if(out != null) {
+					out.close();
+				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -73,8 +92,8 @@ public class MainActivity extends Activity {
 	
 	public void playVideo(View v) {
 //		String url = "http://channelz2.r15s91.vcdn.vn/zv/18b37ff14af9ff78be84ffa328a0d343/54a26990/2014/12/30/8/1/81d21be5cd03bf457df70eae0e4e838c.mp4";
-//		String url = "android.resource://" + getPackageName() + "/" + R.raw.famous;		
-		String url = folderPath + "/famous.3gp";		
+		String url = "android.resource://" + getPackageName() + "/" + R.raw.famous;		
+//		String url = folderPath + "/famous.3gp";		
 		
 		Uri uri = Uri.parse(url);
 		
@@ -89,9 +108,9 @@ public class MainActivity extends Activity {
 		mediaController.setAnchorView(videoView);
 		videoView.setMediaController(mediaController);
 		
-		videoView.requestFocus();
 		videoView.setVideoURI(uri);
-		
+
+		videoView.requestFocus();
 		videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 			
 			@Override
