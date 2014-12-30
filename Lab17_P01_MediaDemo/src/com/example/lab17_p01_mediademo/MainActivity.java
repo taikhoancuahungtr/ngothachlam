@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
 	
 	public void stopMusic(View v) {
 		player.stop();
+		seekBar.setProgress(0);
 	}
 	
 	public void seekToRight(View v) {
