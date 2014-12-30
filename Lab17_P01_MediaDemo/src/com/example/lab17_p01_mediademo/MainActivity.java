@@ -28,10 +28,14 @@ public class MainActivity extends Activity {
 		progressDialog.setMessage("Buffering...");
 		progressDialog.show();
 		
+		// Tao ra MediaController 
 		MediaController mediaController = new MediaController(this);
+		// Neo vao VideoView
 		mediaController.setAnchorView(videoView);
 		videoView.setMediaController(mediaController);
+		
 		videoView.requestFocus();
+		videoView.setVideoURI(uri);
 		
 		videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 			
