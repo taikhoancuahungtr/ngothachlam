@@ -42,12 +42,12 @@ public class MainActivity extends Activity {
 			listFiles = assetManager.list("");
 			InputStream in = null;
 			OutputStream out = null;
-			for (int i = 0; i < listFiles.length; i++) {
-				if(!new File(listFiles[i]).isFile()) {
+			for (String fileName : listFiles) {
+				if(!new File(fileName).isFile()) {
 					continue;
 				}
-				in = assetManager.open(listFiles[i]);
-				File file = new File(folderPath, listFiles[i]);
+				in = assetManager.open(fileName);
+				File file = new File(folderPath, fileName);
 				out = new FileOutputStream(file);
 				copyFile(in, out);
 			}
