@@ -20,7 +20,8 @@ public class MainActivity extends Activity {
 	}
 	
 	public void playVideo(View v) {
-		String url = "http://channelz2.r15s91.vcdn.vn/zv/18b37ff14af9ff78be84ffa328a0d343/54a26990/2014/12/30/8/1/81d21be5cd03bf457df70eae0e4e838c.mp4";
+//		String url = "http://channelz2.r15s91.vcdn.vn/zv/18b37ff14af9ff78be84ffa328a0d343/54a26990/2014/12/30/8/1/81d21be5cd03bf457df70eae0e4e838c.mp4";
+		String url = "android.resource://" + getPackageName() + "/" + R.raw.famous;
 		Uri uri = Uri.parse(url);
 		
 		final VideoView videoView = (VideoView) findViewById(R.id.videoView1);
