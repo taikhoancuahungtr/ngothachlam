@@ -67,6 +67,20 @@ public class MainActivity extends Activity {
 			seekBar.setMax(duration);
 			
 			new UpdateSeekBar().execute();
+			
+			seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+				
+				@Override
+				public void onStopTrackingTouch(SeekBar seekBar) {}
+				
+				@Override
+				public void onStartTrackingTouch(SeekBar seekBar) {}
+				
+				@Override
+				public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+					player.seekTo(progress);
+				}
+			});
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {
