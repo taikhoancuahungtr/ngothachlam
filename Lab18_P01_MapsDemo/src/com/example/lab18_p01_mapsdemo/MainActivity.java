@@ -1,12 +1,18 @@
 package com.example.lab18_p01_mapsdemo;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Locale;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.google.android.maps.GeoPoint;
 import com.google.android.maps.MapActivity;
@@ -62,6 +68,38 @@ public class MainActivity extends MapActivity {
 			Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.pushpin);
 			canvas.drawBitmap(bmp, screenPts.x, screenPts.y - 25, null);
 			return true;
+		}
+		
+		@Override
+		public boolean onTouchEvent(MotionEvent event, MapView mapView) {
+			// ---when user lifts his finger---
+			if (event.getAction() == 1) {
+				GeoPoint p = mapView.getProjection().fromPixels(
+														(int) event.getX(),
+														(int) event.getY()
+													   );
+				overlay = new MapOverlay(p);
+				listOfOverlays.add(overlay);
+				mapView.invalidate();
+				// Toast.makeText(getBaseContext(), "Location: " +
+				// p.getLatitudeE6() / 1E6 + "," +
+				// p.getLongitudeE6() / 1E6 , Toast.LENGTH_SHORT).show();
+				Geocoder geoCoder = new Geocoder(getBaseContext(), Locale.getDefault());
+				try {
+					List<Address> addresses = geoCoder.getFromLocation(p.getLatitudeE6() / 1E6, p.getLongitudeE6() / 1E6, 1);
+					String add = "";
+					if (addresses.size() > 0) {
+						for (int i = 0; i < addresses.get(0).getMaxAddressLineIndex(); i++) {
+							add += addresses.get(0).getAddressLine(i) + "\n";
+						}
+					}
+					Toast.makeText(getBaseContext(), add, Toast.LENGTH_SHORT).show();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return true;
+			}
+			return false;
 		}
 	}
 
