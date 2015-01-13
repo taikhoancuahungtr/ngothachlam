@@ -18,14 +18,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-	}
-	
-	PendingIntent smsSent, smsDelivered;
-	String SENT = "SMS_SENT";
-	String DELIVERED = "SMS_DELIVERED";
-	BroadcastReceiver smsSentReceiver, smsDeliveredReceiver; 
-	
-	public void sendSMS(View v) {
+		
 		smsSent = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
 		smsDelivered = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
 		
@@ -64,13 +57,25 @@ public class MainActivity extends Activity {
 		};
 		
 		registerReceiver(smsSentReceiver, new IntentFilter(SENT));
-		registerReceiver(smsDeliveredReceiver, new IntentFilter(DELIVERED));
-		
+		registerReceiver(smsDeliveredReceiver, new IntentFilter(DELIVERED));		
+	}
+	
+	protected void onPause() {
+		super.onPause();
+		unregisterReceiver(smsSentReceiver);
+		unregisterReceiver(smsDeliveredReceiver);
+	};
+	
+	PendingIntent smsSent, smsDelivered;
+	String SENT = "SMS_SENT";
+	String DELIVERED = "SMS_DELIVERED";
+	BroadcastReceiver smsSentReceiver, smsDeliveredReceiver; 
+	
+	public void sendSMS(View v) {
 		EditText txtPhoneNumber = (EditText) findViewById(R.id.txtPhoneNumber);
 		EditText txtMessage = (EditText) findViewById(R.id.txtMessage);
 		SmsManager smsManager = SmsManager.getDefault();
 		smsManager.sendTextMessage(txtPhoneNumber.getText().toString(), null, 
-				txtMessage.getText().toString(), smsSent, smsDelivered);
-		
+				txtMessage.getText().toString(), smsSent, smsDelivered);		
 	}
 }
