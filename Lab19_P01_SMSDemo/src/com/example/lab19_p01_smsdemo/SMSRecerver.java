@@ -25,7 +25,7 @@ public class SMSRecerver extends BroadcastReceiver {
                     // ---get the sender address/phone number--- 
                     str += msgs[i].getOriginatingAddress(); 
                     str += ": "; 
-                } 
+                }
                 // ---get the message body--- 
                 str += msgs[i].getMessageBody().toString(); 
             } 

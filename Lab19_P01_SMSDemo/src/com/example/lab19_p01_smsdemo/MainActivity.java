@@ -72,10 +72,16 @@ public class MainActivity extends Activity {
 	BroadcastReceiver smsSentReceiver, smsDeliveredReceiver; 
 	
 	public void sendSMS(View v) {
-		EditText txtPhoneNumber = (EditText) findViewById(R.id.txtPhoneNumber);
-		EditText txtMessage = (EditText) findViewById(R.id.txtMessage);
-		SmsManager smsManager = SmsManager.getDefault();
-		smsManager.sendTextMessage(txtPhoneNumber.getText().toString(), null, 
-				txtMessage.getText().toString(), smsSent, smsDelivered);		
+//		EditText txtPhoneNumber = (EditText) findViewById(R.id.txtPhoneNumber);
+//		EditText txtMessage = (EditText) findViewById(R.id.txtMessage);
+//		SmsManager smsManager = SmsManager.getDefault();
+//		smsManager.sendTextMessage(txtPhoneNumber.getText().toString(), null, 
+//				txtMessage.getText().toString(), smsSent, smsDelivered);
+		
+		Intent i = new Intent(android.content.Intent.ACTION_VIEW);		 
+        i.putExtra("address", "5554; 5558; 5560");
+        i.putExtra("sms_body", "Hello my friends!");
+        i.setType("vnd.android-dir/mms-sms");
+        startActivity(i);
 	}
 }
