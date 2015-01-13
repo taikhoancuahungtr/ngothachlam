@@ -8,6 +8,7 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="14" />
     <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -19,10 +20,14 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <receiver android:name="com.example.lab19_p01_smsdemo.SMSRecerver"> 
+            <intent-filter android:priority="100"> 
+				<action android:name="android.provider.Telephony.SMS_RECEIVED" /> 
+            </intent-filter> 
+        </receiver>       
     </application>
 
 </manifest>
