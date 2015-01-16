@@ -14,6 +14,15 @@ public class PersonModel {
 		this.img = img;
 	}
 
+	public Drawable getImg() {
+		return img;
+	}
+
+	public void setImg(Drawable img) {
+		this.img = img;
+	}
+
+
 	public String getName() {
 		return name;
 	}
@@ -29,13 +38,4 @@ public class PersonModel {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-	public Drawable getImg() {
-		return img;
-	}
-
-	public void setImg(Drawable img) {
-		this.img = img;
-	}
-	
 }
