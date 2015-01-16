@@ -103,6 +103,7 @@ public class MainActivity extends Activity {
 			startActivity(new Intent(this, YeruThichActivity.class));
 			return true;
 		} else if (id == R.id.thoat) {
+			this.finish();
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
