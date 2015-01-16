@@ -3,9 +3,25 @@
     tools:context="com.example.testexample.MainActivity" >
 
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
+        android:id="@+id/add"
+        android:orderInCategory="101"
+        android:showAsAction="always"
+        android:title="add"
+        android:icon="@drawable/iconadd"/>
+    <item
+        android:id="@+id/info"
+        android:orderInCategory="102"
+        android:showAsAction="always"
+        android:title="info"
+        android:icon="@drawable/iconinfo"/>
+    <item
+        android:id="@+id/yeuthich"
+        android:orderInCategory="103"
         android:showAsAction="never"
-        android:title="@string/action_settings"/>
-
+        android:title="Yeu Thich"/>
+    <item
+        android:id="@+id/thoat"
+        android:orderInCategory="104"
+        android:showAsAction="never"
+        android:title="Thoat"/>
 </menu>

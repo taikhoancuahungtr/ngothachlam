@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,7 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -49,7 +50,7 @@ public class MainActivity extends Activity {
 			@Override
 			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
 				final int pos = position;
-				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getBaseContext());
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
 				// set title
 				alertDialogBuilder.setTitle("Your Title");		 
 				// set dialog message
@@ -94,7 +95,14 @@ public class MainActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.add) {
+			return true;
+		} else if (id == R.id.info) {
+			return true;
+		} else if (id == R.id.yeuthich) {
+			
+			return true;
+		} else if (id == R.id.thoat) {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
