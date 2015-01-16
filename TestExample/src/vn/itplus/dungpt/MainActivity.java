@@ -1,9 +1,13 @@
 package vn.itplus.dungpt;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 public class MainActivity extends Activity {
 
@@ -11,6 +15,20 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		ListView listView = (ListView) findViewById(R.id.listView1);
+		ArrayList<PersonModel> list = new ArrayList<PersonModel>();
+		PersonModel person = new PersonModel("Amirakhan", "0123456789", 
+				getResources().getDrawable(R.drawable.aamirkhan));
+		list.add(person);
+		person = new PersonModel("Barack Obama", "01987654321", 
+				getResources().getDrawable(R.drawable.barackobama));
+		list.add(person);
+		person = new PersonModel("Yoona", "01888888888", 
+				getResources().getDrawable(R.drawable.yoona));
+		list.add(person);
+		PersonAdapter adapter = new PersonAdapter(this, list);
+		listView.setAdapter(adapter);
 	}
 
 	@Override
