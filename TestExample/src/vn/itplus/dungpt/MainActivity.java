@@ -3,8 +3,9 @@ package vn.itplus.dungpt;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,6 +41,35 @@ public class MainActivity extends Activity {
 				i.putExtra("Name", list.get(position).getName());
 				i.putExtra("Phone", list.get(position).getPhone());
 				startActivity(i);
+			}
+		});
+		
+		listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+			@Override
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getBaseContext());
+				// set title
+				alertDialogBuilder.setTitle("Your Title");		 
+				// set dialog message
+				alertDialogBuilder
+					.setMessage("Co muon chuyen vao danh muc yeu thich ko ?")
+					.setPositiveButton("Dong y",new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							// Luu vao DB
+							
+						}
+					})
+					.setNegativeButton("Bo qua",new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog,int id) {
+							dialog.cancel();
+						}
+					});
+	 
+				// create alert dialog
+				AlertDialog alertDialog = alertDialogBuilder.create();	 
+				// show it
+				alertDialog.show();
+				return true;
 			}
 		});
 	}
