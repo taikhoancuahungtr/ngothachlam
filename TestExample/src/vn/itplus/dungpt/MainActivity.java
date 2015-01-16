@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -61,6 +62,7 @@ public class MainActivity extends Activity {
                             db.open();
                             db.insertAccount(list.get(pos).getName(), list.get(pos).getPhone());
                             db.close(); 
+                            Toast.makeText(getBaseContext(), "Da dc them vao Yeu Thich", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
 						}
 					})
