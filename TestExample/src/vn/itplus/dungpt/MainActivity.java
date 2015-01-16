@@ -46,7 +46,8 @@ public class MainActivity extends Activity {
 		
 		listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 			@Override
-			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			public boolean onItemLongClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
+				final int pos = position;
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getBaseContext());
 				// set title
 				alertDialogBuilder.setTitle("Your Title");		 
@@ -56,7 +57,11 @@ public class MainActivity extends Activity {
 					.setPositiveButton("Dong y",new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,int id) {
 							// Luu vao DB
-							
+							DBAdapter db = new DBAdapter(getBaseContext());
+                            db.open();
+                            db.insertAccount(list.get(pos).getName(), list.get(pos).getPhone());
+                            db.close(); 
+                            dialog.dismiss();
 						}
 					})
 					.setNegativeButton("Bo qua",new DialogInterface.OnClickListener() {
