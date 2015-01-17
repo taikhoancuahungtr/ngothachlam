@@ -100,7 +100,7 @@ public class MainActivity extends Activity {
 		} else if (id == R.id.info) {
 			return true;
 		} else if (id == R.id.yeuthich) {
-			startActivity(new Intent(this, YeruThichActivity.class));
+			startActivity(new Intent(this, YeuThichActivity.class));
 			return true;
 		} else if (id == R.id.thoat) {
 			this.finish();

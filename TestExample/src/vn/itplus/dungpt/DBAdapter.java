@@ -9,17 +9,17 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBAdapter {
         // Khai bao CSDL
         static final String DATABASE_NAME = "MyDB";
-        static final int DATABASE_VERSION = 1;
+        static final int DATABASE_VERSION = 2;
         // Khai bao ten Bang se tao ra
-        static final String TABLE_ACCOUNT = "YeuThich";
+        static final String TABLE_YEU_THICH = "YeuThich";
         // Khai bao cac cot trong bang
         static final String NAME = "name";
         static final String PHONE = "phone";
         // Khai bao lenh tao ra CAC bang trong CSDL
         static final String DATABASE_CREATE 
-                = "CREATE TABLE " + TABLE_ACCOUNT
-                        + "name     TEXT NOT NULL,"
-                        + "phone     TEXT NOT NULL";
+                = "CREATE TABLE " + TABLE_YEU_THICH
+                        + "( " + NAME + " TEXT NOT NULL,"
+                        + PHONE + " TEXT NOT NULL)";
  
         String[] allColumns = {NAME, PHONE};
 
@@ -40,7 +40,7 @@ public class DBAdapter {
 	
 			@Override
 			public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-				db.execSQL("DROP TABLE IF EXISTS " + TABLE_ACCOUNT);
+				db.execSQL("DROP TABLE IF EXISTS " + TABLE_YEU_THICH);
 				onCreate(db);
 			}
 		}
@@ -70,12 +70,12 @@ public class DBAdapter {
             ContentValues c = new ContentValues();
             c.put(NAME, name);
             c.put(PHONE, phone);
-            return db.insert(TABLE_ACCOUNT, null, c);
+            return db.insert(TABLE_YEU_THICH, null, c);
         }
  
         // ---Lay tat ca Accounts---
         public Cursor getAllAccount() {
-            return db.query(TABLE_ACCOUNT, allColumns, null, null, null, null, null);
+            return db.query(TABLE_YEU_THICH, allColumns, null, null, null, null, null);
         }
 }
  

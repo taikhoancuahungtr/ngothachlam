@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class YeruThichActivity extends Activity {
+public class YeuThichActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
